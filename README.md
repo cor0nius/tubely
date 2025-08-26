@@ -1,65 +1,29 @@
-# learn-file-storage-s3-golang-starter (Tubely)
+# Tubely - A Video Upload and Streaming Backend with AWS S3
 
-This repo contains the starter code for the Tubely application - the #1 tool for engagement bait - for the "Learn File Servers and CDNs with S3 and CloudFront" [course](https://www.boot.dev/courses/learn-file-servers-s3-cloudfront-golang) on [boot.dev](https://www.boot.dev)
+Tubely is a backend service for a video-sharing application, built in Go. It provides a JSON API for user authentication and video metadata management. The key feature of this project is its integration with AWS S3 for scalable, cloud-based video storage and AWS CloudFront for content delivery.
 
-## Quickstart
+This project was completed as part of the ["Learn File Servers and CDNs with S3 and CloudFront"](https://www.boot.dev/) course on boot.dev, starting from a pre-built backend and enhancing it with cloud storage capabilities.
 
-*This is to be used as a *reference\* in case you need it, you should follow the instructions in the course rather than trying to do everything here.
+## Features Implemented
 
-## 1. Install dependencies
+*   **Direct-to-S3 Video Uploads:** Replaced the local file storage system with direct uploads to an AWS S3 bucket.
+*   **Video Processing:** The application processes videos locally to ensure they are optimized for web streaming ("fast start") before uploading them to the cloud.
+*   **CDN Integration:** Serves video files through a CDN (AWS CloudFront) for fast, low-latency streaming across the globe.
+*   **Local Thumbnail Storage:** The starter project's functionality for handling thumbnail uploads to the local filesystem was retained.
 
-- [Go](https://golang.org/doc/install)
-- `go mod download` to download all dependencies
-- [FFMPEG](https://ffmpeg.org/download.html) - both `ffmpeg` and `ffprobe` are required to be in your `PATH`.
+## Key Cloud & Backend Skills Learned
 
-```bash
-# linux
-sudo apt update
-sudo apt install ffmpeg
-
-# mac
-brew update
-brew install ffmpeg
-```
-
-- [SQLite 3](https://www.sqlite.org/download.html) only required for you to manually inspect the database.
-
-```bash
-# linux
-sudo apt update
-sudo apt install sqlite3
-
-# mac
-brew update
-brew install sqlite3
-```
-
-- [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
-
-## 2. Download sample images and videos
-
-```bash
-./samplesdownload.sh
-# samples/ dir will be created
-# with sample images and videos
-```
-
-## 3. Configure environment variables
-
-Copy the `.env.example` file to `.env` and fill in the values.
-
-```bash
-cp .env.example .env
-```
-
-You'll need to update values in the `.env` file to match your configuration, but _you won't need to do anything here until the course tells you to_.
-
-## 3. Run the server
-
-```bash
-go run .
-```
-
-- You should see a new database file `tubely.db` created in the root directory.
-- You should see a new `assets` directory created in the root directory, this is where the images will be stored.
-- You should see a link in your console to open the local web page.
+*   **Cloud Storage with AWS S3:**
+    *   Configured and integrated the AWS SDK for Go (v2) into an existing application.
+    *   Wrote the logic to securely upload large video files from the server to an S3 bucket.
+    *   Managed S3 object keys to organize files within the bucket.
+*   **Content Delivery Networks (CDN):**
+    *   Understood the role of a CDN in a modern file-serving architecture.
+    *   Constructed file URLs that point to a CloudFront distribution for efficient, cached content delivery.
+*   **Backend API Enhancement:**
+    *   Modified existing API handlers to incorporate the new cloud upload functionality.
+    *   Updated the database logic to store the S3/CDN URL of the video file instead of a local path.
+*   **Configuration Management:**
+    *   Managed environment variables for all AWS-related settings, including bucket name, region, and CloudFront distribution domain.
+*   **Handling Multipart File Uploads:**
+    *   Worked with multipart form data from HTTP requests to receive and process video files on the backend before uploading to the cloud.
