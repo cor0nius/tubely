@@ -2,7 +2,7 @@
 
 Tubely is a backend service for a video-sharing application, built in Go. It provides a JSON API for user authentication and video metadata management. The key feature of this project is its integration with AWS S3 for scalable, cloud-based video storage and AWS CloudFront for content delivery.
 
-This project was completed as part of the ["Learn File Servers and CDNs with S3 and CloudFront"](https://www.boot.dev/) course on boot.dev, starting from a pre-built backend and enhancing it with cloud storage capabilities.
+This project was completed as part of the ["Learn File Servers and CDNs with S3 and CloudFront"](https://www.boot.dev/courses/learn-file-servers-s3-cloudfront-golang) course on boot.dev, starting from a pre-built backend and enhancing it with cloud storage capabilities.
 
 ## Features Implemented
 
